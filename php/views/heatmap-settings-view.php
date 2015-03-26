@@ -107,8 +107,9 @@ class HA_Heatmap_Settings_View {
 		
 		
 		echo '<p>';
-		foreach ($roles as $role_value => $role_name) { ?>
-			<input type="checkbox" name="<?php echo HA_Common::HEAT_MAP_SETTINGS_KEY; ?>[<?php echo HA_Common::HIDE_ROLES_OPTION; ?>][]" value="<?php echo $role_value ?>" <?php
+		foreach ($roles as $role_value => $role_name) {
+			echo '<input type="checkbox" name="' . HA_Common::HEAT_MAP_SETTINGS_KEY . '[' . HA_Common::HIDE_ROLES_OPTION . '][]" value="' . $role_value . '"';
+			
 			if (is_array($hide_roles)) {
 				if (in_array($role_value, $hide_roles)) {
 					echo 'checked="checked"';
