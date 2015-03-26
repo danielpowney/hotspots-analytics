@@ -3,7 +3,7 @@
 Plugin Name: Hotspots Analytics
 Plugin URI: http://wordpress.org/extend/plugins/hotspots/
 Description: The most advanced analytics plugin for WordPress websites including heatmaps, user activity and custom event tracking.
-Version: 4.0.8
+Version: 4.0.9
 Author: Daniel Powney
 Auhtor URI: danielpowney.com
 License: GPL2
@@ -38,11 +38,8 @@ register_activation_hook( __FILE__, 'ha_activate_plugin');
 register_uninstall_hook( __FILE__, 'ha_uninstall_plugin' );
 //register_deactivation_hook( __FILE__, 'ha_uninstall_plugin' );
 
-// ensure a session has been started
-session_start();
-
+if ( session_id() == '' ) {
+	session_start();
+}
 require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'update-check.php';
-
-
-
 ?>

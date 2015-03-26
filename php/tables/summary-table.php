@@ -99,8 +99,12 @@ class HA_Summary_Table extends WP_List_Table {
 		global $ha_admin_controller;
 		$data = $ha_admin_controller->get_data_services()->table_query('event_statistics_table_report_data', $query_helper->get_filters(), $items_per_page, $page_num);
 		
-		$this->set_pagination_args( $data['pagination_args'] );
-		$this->items =   $data['items'];
+		if ( isset( $data['pagination_args'])) {
+			$this->set_pagination_args( $data['pagination_args'] );
+		}
+		if ( isset( $data['items'] )) {
+			$this->items = $data['items'];
+		}
 		
 	}
 	

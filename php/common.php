@@ -419,25 +419,28 @@ class HA_Common {
 	 * @param unknown_type $session_id
 	 * @param unknown_type $create_if_empty
 	 */
-	public static function get_user_details($ip_address, $session_id, $create_if_empty, $data_services) {
+	public static function get_user_details( $ip_address, $session_id, $create_if_empty, $data_services ) {
 		
 		$wp_user_details = HA_Common::get_wp_user_details();
 		$current_time = current_time('mysql');
 		$user_role =  $wp_user_details['user_role'];
 		$username = $wp_user_details['username'];
+		$user_id = '';
 		
-		$params = array(
-				'ip_address' => $ip_address,
-				'session_id' => $session_id,
-				'create_if_empty' => $create_if_empty,
-				'current_time' => $current_time,
-				'user_role' => $user_role,
-				'username' => $username
-		);
+		if ( $data_services != null) {
+			
+			$params = array(
+					'ip_address' => $ip_address,
+					'session_id' => $session_id,
+					'create_if_empty' => $create_if_empty,
+					'current_time' => $current_time,
+					'user_role' => $user_role,
+					'username' => $username
+			);
 		
-		$data = $data_services->custom_query('add_retrieve_user_details', $params);
-		
-		$user_id = $data->user_id;
+			$data = $data_services->custom_query('add_retrieve_user_details', $params);
+			$user_id = $data->user_id;
+		}
 		
 		return array(
 				'user_id' => $user_id,
@@ -473,17 +476,17 @@ class HA_Common {
 		$user_environment_id = '';
 		$current_time = current_time('mysql');
 		
-		$params = array(
-				'user_id' => $user_id,
-				'create_if_empty' => $create_if_empty,
-				'browser' => $browser,
-				'os' => $os,
-				'device' => $device,
-				'current_time' => $current_time
-		);
-		
 		// don't insert if user_id has not been provided
-		if ($user_id) {
+		if ( $data_services != null && $user_id != null ) {
+			$params = array(
+					'user_id' => $user_id,
+					'create_if_empty' => $create_if_empty,
+					'browser' => $browser,
+					'os' => $os,
+					'device' => $device,
+					'current_time' => $current_time
+			);
+			
 			$data = $data_services->custom_query('add_retrieve_user_environment_details', $params);			
 			$user_environment_id = $data->user_environment_id;
 		}

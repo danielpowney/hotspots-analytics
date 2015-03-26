@@ -16,15 +16,6 @@ class HA_Frontend_Controller {
 	// TODO make this an option
 	private $ignore_ajax_actions = array('save_user_event', 'retrieve_user_events');
 	
-	private $data_services = null;
-	
-	public function set_data_services(&$data_services) {
-		$this->data_services = $data_services;
-	}
-	public function get_data_services() {
-		return $this->data_services;
-	}
-
 	/**
 	 * Constructor
 	 *
@@ -57,10 +48,6 @@ class HA_Frontend_Controller {
 		wp_enqueue_script('jquery-ui-dialog');
 		wp_enqueue_style('jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
 		
-		$this->data_services = new HA_Local_Data_Services();
-		
-		do_action('ha_frontend_controller_assets', $this);
-		
 		$config_array = $this->construct_config_array();
 
 		wp_localize_script( 'ha_frontend-script', HA_Common::CONFIG_DATA, $config_array );
@@ -86,8 +73,8 @@ class HA_Frontend_Controller {
 		$session_id = session_id();
 		
 		// get or create user details and user environment details
-		$user_details = HA_Common::get_user_details($ip_address, $session_id, true, $this->data_services);
-		$user_environment_details = HA_Common::get_user_environment_details($user_details['user_id'], true, $this->data_services);
+		$user_details = HA_Common::get_user_details($ip_address, $session_id, false, null);
+		$user_environment_details = HA_Common::get_user_environment_details($user_details['user_id'], false, null);
 		
 		$config_array = array_merge($config_array, $user_environment_details);
 		$config_array = array_merge($config_array, $user_details);
