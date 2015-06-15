@@ -82,67 +82,64 @@ var events = new function() {
 	 * Trigger setup for saving touchscreen tap events
 	 */
 	this.setupSaveTouchscreenTapEvent = function(selector, eventType, description, data) {
-		// Use Modernizr to detect browser supports touch
-		if (Modernizr.touch) {
-			var touchData = {
-				started : null, // detect if a touch event is sarted
-				currrentX : 0,
-				yCoord : 0,
-				previousXCoord : 0,
-				previousYCoord : 0,
-				touch : null
-			};
+		
+		var touchData = {
+			started : null, // detect if a touch event is sarted
+			currrentX : 0,
+			yCoord : 0,
+			previousXCoord : 0,
+			previousYCoord : 0,
+			touch : null
+		};
 
-			jQuery(selector).on("touchstart", function(e) {
-				touchData.started = new Date().getTime();
-				var touch = e.originalEvent.touches[0];
-				touchData.previousXCoord = touch.pageX;
-				touchData.previousYCoord = touch.pageY;
-				touchData.touch = touch;
-			});
-
-			jQuery(selector).on(
-					"touchend touchcancel",
-					function(e) {
-						var now = new Date().getTime();
-
-						// Detecting if after 200ms if in the same position.
-						// FIXME taps are not always recorded if the browser 
-						// takes over before the AJAX call is made. So this 
-						// means we will get some, and lose some.
-						if ((touchData.started !== null)
-								&& ((now - touchData.started) < 200)
-								&& (touchData.touch !== null)) {
-							var touch = touchData.touch;
-							var xCoord = touch.pageX;
-							var yCoord = touch.pageY;
-							if ((touchData.previousXCoord === xCoord)
-									&& (touchData.previousYCoord === yCoord)) {
-								
-								if (jQuery('#wpadminbar').length > 0) {
-									yCoord -= jQuery('#wpadminbar').height();
-								}
-								
-								if (description == null || description == '') {
-									description = 'A touchscreen tap was made at x = ' + xCoord + ' and y = ' + yCoord + '.';
-								}
-								if (eventType == null || eventType == '') {
-									eventType = 'touchscreen_tap';
-								}
-								if (data == null) {
-									if (selector !== document) {
-										data = selector;
-									} else {
-										data = '';
-									}
-								}
-								events.saveEvent(config_data.user_id, config_data.user_environment_id, eventType, description, xCoord, yCoord, true, data);
+		jQuery(selector).on("touchstart", function(e) {
+			touchData.started = new Date().getTime();
+			var touch = e.originalEvent.touches[0];
+			touchData.previousXCoord = touch.pageX;
+			touchData.previousYCoord = touch.pageY;
+			touchData.touch = touch;
+		});
+		
+		jQuery(selector).on(
+				"touchend touchcancel",
+				function(e) {
+					var now = new Date().getTime();
+					// Detecting if after 200ms if in the same position.
+					// FIXME taps are not always recorded if the browser 
+					// takes over before the AJAX call is made. So this 
+					// means we will get some, and lose some.
+					if ((touchData.started !== null)
+							&& ((now - touchData.started) < 200)
+							&& (touchData.touch !== null)) {
+						var touch = touchData.touch;
+						var xCoord = touch.pageX;
+						var yCoord = touch.pageY;
+						if ((touchData.previousXCoord === xCoord)
+								&& (touchData.previousYCoord === yCoord)) {
+							
+							if (jQuery('#wpadminbar').length > 0) {
+								yCoord -= jQuery('#wpadminbar').height();
 							}
+							
+							if (description == null || description == '') {
+								description = 'A touchscreen tap was made at x = ' + xCoord + ' and y = ' + yCoord + '.';
+							}
+							if (eventType == null || eventType == '') {
+								eventType = 'touchscreen_tap';
+							}
+							if (data == null) {
+								if (selector !== document) {
+									data = selector;
+								} else {
+									data = '';
+								}
+							}
+							events.saveEvent(config_data.user_id, config_data.user_environment_id, eventType, description, xCoord, yCoord, true, data);
 						}
-						touchData.started = null;
-						touchData.touch = null;
-					});
-		}
+					}
+					touchData.started = null;
+					touchData.touch = null;
+				});
 	};
 	
 	/**

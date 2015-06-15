@@ -80,13 +80,6 @@ var drawing = new function() {
 	 * Initilises the drawing of the heatmap
 	 */
 	this.init = function(isHeatmap) {
-		if (!Modernizr.canvas) {
-			alert("HTML5 Canvas not supported by browser!");
-			// just so they don't try and draw on the canvas
-			drawHeatmapEnabled = false;
-			debug = false; 
-			return;
-		}
 		
 		// Remove the WordPress admin bar and margin style
 		jQuery('#wpadminbar').remove();

@@ -1,4 +1,4 @@
-=== Hotspots Analytics - Heatmaps, User Activity & Custom Event Tracking ===
+=== Hotspots Analytics ===
 Contributors: dpowney
 Donate link: http://www.danielpowney.com/donate
 Tags: mouse click, tap, touch, click, usability, heat map, tracker, analytic, analytics, user, track, tracking, impression, funnel, conversion, link, responsive, device, Google
@@ -119,6 +119,10 @@ No. There is an setting called width allowance which allows up to 20 pixels each
 You will need to understand jQuery selectors first here: http://api.jquery.com/category/selectors/. You can bind a mouse click, touchscreen tap, or form submit event to any HTML elements on the pahe by using jQuery selectors. 
 
 == Changelog ==
+
+= 4.0.9 (15/06/2015)
+* Removed modernizer check in JS
+* 
 
 = 4.0.8 (11/04/2014) =
 * Replaced deprecated jQuery live with on 

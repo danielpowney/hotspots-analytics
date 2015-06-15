@@ -38,11 +38,10 @@ class HA_Frontend_Controller {
 
 		wp_enqueue_style( 'ha_frontend-style' , plugins_url( $root_relative_path . 'css' . DIRECTORY_SEPARATOR . 'frontend.css', __FILE__ ) );
 		wp_enqueue_script( 'ha_heatmap', plugins_url( $root_relative_path . 'js' .  DIRECTORY_SEPARATOR . 'heatmap' . DIRECTORY_SEPARATOR . 'heatmap.js', __FILE__ ), array(), false, true );
-		wp_enqueue_script( 'ha_modernizer', plugins_url( $root_relative_path . 'js' .  DIRECTORY_SEPARATOR . 'modernizer' . DIRECTORY_SEPARATOR . 'modernizer.custom.730.js', __FILE__ ), array(), false, true );
-		wp_enqueue_script( 'ha_utils', plugins_url( $root_relative_path . 'js' . DIRECTORY_SEPARATOR . 'utils.js', __FILE__ ), array( 'jquery', 'ha_heatmap', 'ha_modernizer' ), false, true );
-		wp_enqueue_script( 'ha_drawing', plugins_url( $root_relative_path . 'js' . DIRECTORY_SEPARATOR . 'drawing.js', __FILE__ ), array( 'jquery', 'ha_heatmap', 'ha_modernizer', 'ha_utils' ), false, true );
-		wp_enqueue_script( 'ha_events', plugins_url( $root_relative_path . 'js' . DIRECTORY_SEPARATOR . 'events.js', __FILE__ ), array( 'jquery', 'ha_heatmap', 'ha_modernizer', 'ha_utils', 'ha_drawing' ), false, true );
-		wp_enqueue_script( 'ha_frontend-script', plugins_url( $root_relative_path . 'js' . DIRECTORY_SEPARATOR . 'frontend.js', __FILE__ ), array( 'jquery', 'ha_heatmap', 'ha_modernizer', 'ha_utils', 'ha_drawing', 'ha_events' ), false, true );
+		wp_enqueue_script( 'ha_utils', plugins_url( $root_relative_path . 'js' . DIRECTORY_SEPARATOR . 'utils.js', __FILE__ ), array( 'jquery', 'ha_heatmap' ), false, true );
+		wp_enqueue_script( 'ha_drawing', plugins_url( $root_relative_path . 'js' . DIRECTORY_SEPARATOR . 'drawing.js', __FILE__ ), array( 'jquery', 'ha_heatmap', 'ha_utils' ), false, true );
+		wp_enqueue_script( 'ha_events', plugins_url( $root_relative_path . 'js' . DIRECTORY_SEPARATOR . 'events.js', __FILE__ ), array( 'jquery', 'ha_heatmap', 'ha_utils', 'ha_drawing' ), false, true );
+		wp_enqueue_script( 'ha_frontend-script', plugins_url( $root_relative_path . 'js' . DIRECTORY_SEPARATOR . 'frontend.js', __FILE__ ), array( 'jquery', 'ha_heatmap', 'ha_utils', 'ha_drawing', 'ha_events' ), false, true );
 
 		// for loading dialog
 		wp_enqueue_script('jquery-ui-dialog');
