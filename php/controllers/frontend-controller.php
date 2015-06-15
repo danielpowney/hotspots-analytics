@@ -45,7 +45,7 @@ class HA_Frontend_Controller {
 
 		// for loading dialog
 		wp_enqueue_script('jquery-ui-dialog');
-		wp_enqueue_style('jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
+		wp_enqueue_style('jquery-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
 		
 		$config_array = $this->construct_config_array();
 
