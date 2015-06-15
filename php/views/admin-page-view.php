@@ -33,18 +33,6 @@ class HA_Admin_Page_View {
 				HA_Admin_Page_View::show_settings_form(HA_Common::HEAT_MAP_SETTINGS_KEY);
 			else if ($current_tab == HA_Common::URL_FILTERS_SETTINGS_TAB) {
 				HA_Admin_Page_View::show_settings_form(HA_Common::URL_FILTERS_SETTINGS_KEY);
-			} else if ($current_tab == HA_Common::REMOTE_SETTINGS_TAB) {
-	
-				do_action('remote_settings_view');
-				
-				if (!class_exists('HARC_Remote_Settings_View')) {
-				?>
-					<h3>Remote Client Settings</h3>
-					<p> This plugin makes additional AJAX requests for each event (mouse click, touch screen tap, page view, AJAX action and custom events) which increases the load on your server and impacts performance. You can setup some remote settings to direct all events to be saved and managed on a remote WordPress website, so that performance is not impacted. For more 
-					informatiom, <a href="http://danielpowney.com/downloads/hotspots-analytics-remote-bundle">click here</a>.</p>
-				<?php 
-				}
-				
 			} else if ($current_tab == HA_Common::DATABASE_SETTINGS_TAB) {
 				?>
 				<form method="post" name="<?php echo HA_Common::DATABASE_SETTINGS_KEY; ?>" action="options.php" class="hut-settings-form">

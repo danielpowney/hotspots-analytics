@@ -29,7 +29,6 @@ class HA_Common {
 	SCHEDULE_SETTINGS_TAB				= 'ha_schedule_settings_tab',
 	DATABASE_SETTINGS_TAB				= 'ha_database_settings_tab',
 	CUSTOM_EVENTS_SETTINGS_TAB			= 'ha_custom_events_settings_tab',
-	REMOTE_SETTINGS_TAB					= 'ha_remote_settings_tab',
 	URL_FILTERS_SETTINGS_TAB 			= 'ha_url_filters_settings_tab',
 	HEAT_MAPS_TAB 						= 'ha_heat_maps_tab',
 	USERS_TAB							= 'ha_users_tab',

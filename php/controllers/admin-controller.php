@@ -61,7 +61,6 @@ class HA_Admin_Controller {
 		$this->settings_tabs[HA_Common::URL_FILTERS_SETTINGS_TAB] = 'URL Filters';
 		$this->settings_tabs[HA_Common::DATABASE_SETTINGS_TAB] = 'Database';
 		$this->settings_tabs[HA_Common::CUSTOM_EVENTS_SETTINGS_TAB] = 'Custom Events';
-		$this->settings_tabs[HA_Common::REMOTE_SETTINGS_TAB] = 'Remote Client';
 		
 		$this->users_tabs[HA_Common::USERS_TAB] = 'Users';
 		$this->users_tabs[HA_Common::USER_ACTIVITY_TAB] = 'User Activity';
@@ -138,7 +137,9 @@ class HA_Admin_Controller {
 		'.HA_Common::OS_COLUMN.' varchar(255),
 		'.HA_Common::DEVICE_COLUMN.' varchar(255),
 		'.HA_Common::LAST_UPDT_DATE_COLUMN.' DATETIME,
-		PRIMARY KEY  ('.HA_Common::ID_COLUMN.')
+		PRIMARY KEY  ('.HA_Common::ID_COLUMN.'),
+		KEY  ix_user_env (' . HA_Common::USER_ID_COLUMN . ', '. HA_Common::BROWSER_COLUMN . ', ' 
+				. HA_Common::OS_COLUMN . ', ' . HA_Common::DEVICE_COLUMN . ')
 		) ENGINE=InnoDB AUTO_INCREMENT=1;';
 		dbDelta( $query );
 		
@@ -156,7 +157,10 @@ class HA_Admin_Controller {
 		'.HA_Common::DATA_COLUMN.' varchar(255),
 		'.HA_Common::DESCRIPTION_COLUMN.' varchar(255),
 		'.HA_Common::LAST_UPDT_DATE_COLUMN.' DATETIME,
-		PRIMARY KEY  ('.HA_Common::ID_COLUMN.')
+		PRIMARY KEY  ('.HA_Common::ID_COLUMN.'),
+		KEY  ix_event (' . HA_Common::X_COORD_COLUMN . ', '. HA_Common::Y_COORD_COLUMN . ', ' 
+				. HA_Common::EVENT_TYPE_COLUMN . ', ' . HA_Common::PAGE_WIDTH_COLUMN . ', ' 
+				. HA_Common::URL_COLUMN . ', ' . HA_Common::USER_ENV_ID_COLUMN . ')			
 		) ENGINE=InnoDB AUTO_INCREMENT=1;';
 		dbDelta( $query );
 		
@@ -170,7 +174,8 @@ class HA_Admin_Controller {
 		'.HA_Common::IS_FORM_SUBMIT_COLUMN. ' tinyint(1) DEFAULT 0,
 		'.HA_Common::IS_MOUSE_CLICK_COLUMN. ' tinyint(1) DEFAULT 1,
 		'.HA_Common::IS_TOUCHSCREEN_TAP_COLUMN. ' tinyint(1) DEFAULT 0,
-		PRIMARY KEY  ('.HA_Common::ID_COLUMN.')
+		PRIMARY KEY  ('.HA_Common::ID_COLUMN.'),
+		KEY  ix_custom_event (' . HA_Common::URL_COLUMN . ', '. HA_Common::EVENT_TYPE_COLUMN . '),		
 		) ENGINE=InnoDB AUTO_INCREMENT=1;';
 		dbDelta( $query );
 
