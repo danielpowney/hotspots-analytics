@@ -122,7 +122,7 @@ You will need to understand jQuery selectors first here: http://api.jquery.com/c
 
 = 4.0.9 (15/06/2015)
 * Removed modernizer check in JS
-* 
+* Optimized db index performance
 
 = 4.0.8 (11/04/2014) =
 * Replaced deprecated jQuery live with on 
