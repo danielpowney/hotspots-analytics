@@ -27,9 +27,9 @@ The key features of the plugin are:
 
 Here's a demo in debug mode: http://danielpowney.com/hotspots-analytics?drawHeatmap=true
 
-= Remote Setting =
+The plugin should not be used where performance is critical as an additional server request is made for each mouse click, touch screen tap, AJAX action, page view and custom event.
 
-The plugin should not be used where performance is critical as an additional server request is made for each mouse click, touch screen tap, AJAX action, page view and custom event. However you can purchase two plugins which allow you to direct all user activity events to be saved on a remote host and database to reduce load on your server. For more information, visit http://danielpowney.com/downloads/hotspots-analytics-remote-bundle/
+Github Repo: https://github.com/danielpowney/hotspots-analytics
 
 = Heatmaps =
 There are two types of heatmaps, a confetti heatmap with spots and heatmap.js. Each heatmap shows the density heat of mouse clicks and or touch screen taps from green which is cool to red which is hot. Heatmap.js is an open source JavaScript library for drawing heatmaps using HTML5 canvas.
@@ -55,9 +55,6 @@ There are various reports which provide statistics and graphs of all user activi
 Custom events can be added for mouse clicks, touch screen taps or form submits on any HTML element selected using a jQuery selector. Alternatively you can use JavaScript to save custom events using the saveEvent function of the global hotspots object 
 
 i.e. hotspots.saveEvent('my_event','My description', 'My misc data');
-
-
-*Note: This plugin was formally known as Hotspots User Tracker*
 
 == Installation ==
 
