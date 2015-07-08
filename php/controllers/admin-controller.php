@@ -175,7 +175,7 @@ class HA_Admin_Controller {
 		'.HA_Common::IS_MOUSE_CLICK_COLUMN. ' tinyint(1) DEFAULT 1,
 		'.HA_Common::IS_TOUCHSCREEN_TAP_COLUMN. ' tinyint(1) DEFAULT 0,
 		PRIMARY KEY  ('.HA_Common::ID_COLUMN.'),
-		KEY  ix_custom_event (' . HA_Common::URL_COLUMN . ', '. HA_Common::EVENT_TYPE_COLUMN . '),		
+		KEY  ix_custom_event (' . HA_Common::URL_COLUMN . ', '. HA_Common::EVENT_TYPE_COLUMN . ')		
 		) ENGINE=InnoDB AUTO_INCREMENT=1;';
 		dbDelta( $query );
 

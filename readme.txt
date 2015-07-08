@@ -117,7 +117,10 @@ You will need to understand jQuery selectors first here: http://api.jquery.com/c
 
 == Changelog ==
 
-= 4.0.9 (15/06/2015)
+= 4.0.10 (07/07/2015) =
+* Fix: Fixed unable to create custom events db table due to stray comma in SQL statement
+
+= 4.0.9 (15/06/2015) =
 * Removed modernizer check in JS
 * Optimized db index performance
 * Make jQuery UI calls protocol agnostic
@@ -127,7 +130,6 @@ You will need to understand jQuery selectors first here: http://api.jquery.com/c
 
 = 4.0.7 (25/01/2014) =
 * Added event_type filters to users table
-
 
 = 4.0.6 (25/01/2014) =
 * Fixed report bug with query filters
