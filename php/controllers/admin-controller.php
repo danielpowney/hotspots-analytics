@@ -315,7 +315,7 @@ class HA_Admin_Controller {
 		);
 		wp_enqueue_script( 'jquery' );
 
-		$root_relative_path = '..' . DIRECTORY_SEPARATOR . '.. ' . DIRECTORY_SEPARATOR;
+		$root_relative_path = '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
 		
 		if ( is_admin() ) {
 			wp_enqueue_style( HA_Common::PLUGIN_ID.'-admin-style', plugins_url( $root_relative_path . 'css' . DIRECTORY_SEPARATOR . 'admin.css', __FILE__ ) );

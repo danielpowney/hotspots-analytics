@@ -3,7 +3,7 @@ Contributors: dpowney
 Donate link: http://www.danielpowney.com/donate
 Tags: mouse click, tap, touch, click, usability, heat map, tracker, analytic, analytics, user, track, tracking, impression, funnel, conversion, link, responsive, device, Google
 Requires at least: 3.0.1
-Tested up to: 4.2.2
+Tested up to: 4.5
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -117,8 +117,12 @@ You will need to understand jQuery selectors first here: http://api.jquery.com/c
 
 == Changelog ==
 
+= 4.0.11 (05/04/2016) =
+* Bug: Fixed extra space in relative root path when loading admin assets which is causing some issues
+* Bug: Removed usage of mysql_real_escape_string() in admin tables
+
 = 4.0.10 (07/07/2015) =
-* Fix: Fixed unable to create custom events db table due to stray comma in SQL statement
+* Bug: Fixed unable to create custom events db table due to stray comma in SQL statement
 
 = 4.0.9 (15/06/2015) =
 * Removed modernizer check in JS

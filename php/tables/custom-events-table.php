@@ -81,7 +81,7 @@ class HA_Custom_Event_Table extends WP_List_Table {
 		// pagination
 		$item_count = $wpdb->query( $query ); //return the total number of affected rows
 		$items_per_page = 10;
-		$page_num = !empty($_GET["paged"]) ? mysql_real_escape_string($_GET["paged"]) : '';
+		$page_num = ! empty( $_GET['paged'] ) ? $_GET['paged'] : '';
 		if ( empty( $page_num ) || !is_numeric( $page_num ) || $page_num <= 0 ) {
 			$page_num = 1;
 		}
