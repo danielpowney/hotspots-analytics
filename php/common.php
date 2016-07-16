@@ -291,9 +291,9 @@ class HA_Common {
 		}
 	
 		// Remove some query params which we do not want
-		$url = HA_Common::remove_query_string_params($url, HA_Common::$ignore_query_params);
+		$url = HA_Common::remove_query_string_params( $url, apply_filters( 'ha_ignore_query_params', HA_Common::$ignore_query_params ) );
 	
-		return $url;
+		return apply_filters( 'ha_url' , $url );
 	}
 	
 	/**

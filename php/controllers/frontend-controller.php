@@ -13,7 +13,6 @@ require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARA
  */
 class HA_Frontend_Controller {
 
-	// TODO make this an option
 	private $ignore_ajax_actions = array('save_user_event', 'retrieve_user_events');
 	
 	/**

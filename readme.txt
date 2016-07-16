@@ -117,6 +117,10 @@ You will need to understand jQuery selectors first here: http://api.jquery.com/c
 
 == Changelog ==
 
+= 4.0.12 (16/07/2016) =
+* Tweak: Added filters to ignore custom URL query parameters and also to modify the normalized URL
+* Bug: Fixed activation error in dbdelta when creating indexes
+
 = 4.0.11 (05/04/2016) =
 * Bug: Fixed extra space in relative root path when loading admin assets which is causing some issues
 * Bug: Removed usage of mysql_real_escape_string() in admin tables

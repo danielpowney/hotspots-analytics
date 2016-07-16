@@ -106,7 +106,7 @@ class HA_Admin_Controller {
 	 */
 	public static function activate_plugin() {
 		
-		global $wpdb;
+		global $wpdb, $charset_collate;
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		
 		/*
@@ -127,7 +127,7 @@ class HA_Admin_Controller {
 		'.HA_Common::USERNAME_COLUMN.' varchar(255) DEFAULT "",
 		'.HA_Common::LAST_UPDT_DATE_COLUMN.' DATETIME,
 		PRIMARY KEY  ('.HA_Common::ID_COLUMN.')
-		) ENGINE=InnoDB AUTO_INCREMENT=1;';
+		) '  . $charset_collate;
 		dbDelta( $query );
 		
 		$query = 'CREATE TABLE '.$wpdb->prefix.HA_Common::USER_ENV_TBL_NAME.' (
@@ -138,9 +138,9 @@ class HA_Admin_Controller {
 		'.HA_Common::DEVICE_COLUMN.' varchar(255),
 		'.HA_Common::LAST_UPDT_DATE_COLUMN.' DATETIME,
 		PRIMARY KEY  ('.HA_Common::ID_COLUMN.'),
-		KEY  ix_user_env (' . HA_Common::USER_ID_COLUMN . ', '. HA_Common::BROWSER_COLUMN . ', ' 
-				. HA_Common::OS_COLUMN . ', ' . HA_Common::DEVICE_COLUMN . ')
-		) ENGINE=InnoDB AUTO_INCREMENT=1;';
+		KEY ix_user_env (' . HA_Common::USER_ID_COLUMN . ','. HA_Common::BROWSER_COLUMN . ',' 
+		. HA_Common::OS_COLUMN . ',' . HA_Common::DEVICE_COLUMN . ')
+		) ' . $charset_collate;
 		dbDelta( $query );
 		
 		// User event table
@@ -158,10 +158,10 @@ class HA_Admin_Controller {
 		'.HA_Common::DESCRIPTION_COLUMN.' varchar(255),
 		'.HA_Common::LAST_UPDT_DATE_COLUMN.' DATETIME,
 		PRIMARY KEY  ('.HA_Common::ID_COLUMN.'),
-		KEY  ix_event (' . HA_Common::X_COORD_COLUMN . ', '. HA_Common::Y_COORD_COLUMN . ', ' 
-				. HA_Common::EVENT_TYPE_COLUMN . ', ' . HA_Common::PAGE_WIDTH_COLUMN . ', ' 
-				. HA_Common::URL_COLUMN . ', ' . HA_Common::USER_ENV_ID_COLUMN . ')			
-		) ENGINE=InnoDB AUTO_INCREMENT=1;';
+		KEY ix_event (' . HA_Common::X_COORD_COLUMN . ','. HA_Common::Y_COORD_COLUMN . ',' 
+		. HA_Common::EVENT_TYPE_COLUMN . ',' . HA_Common::PAGE_WIDTH_COLUMN . ',' 
+		. HA_Common::URL_COLUMN . ',' . HA_Common::USER_ENV_ID_COLUMN . ')			
+		) ' . $charset_collate;
 		dbDelta( $query );
 		
 		// Custom event table
@@ -175,8 +175,8 @@ class HA_Admin_Controller {
 		'.HA_Common::IS_MOUSE_CLICK_COLUMN. ' tinyint(1) DEFAULT 1,
 		'.HA_Common::IS_TOUCHSCREEN_TAP_COLUMN. ' tinyint(1) DEFAULT 0,
 		PRIMARY KEY  ('.HA_Common::ID_COLUMN.'),
-		KEY  ix_custom_event (' . HA_Common::URL_COLUMN . ', '. HA_Common::EVENT_TYPE_COLUMN . ')		
-		) ENGINE=InnoDB AUTO_INCREMENT=1;';
+		KEY ix_custom_event (' . HA_Common::URL_COLUMN . ','. HA_Common::EVENT_TYPE_COLUMN . ')		
+		) ' . $charset_collate;
 		dbDelta( $query );
 
 	}
